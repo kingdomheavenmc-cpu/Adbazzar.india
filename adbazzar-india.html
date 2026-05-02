@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Bazzar India | Digital Marketing Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --saffron: #FF6B00;
+    --saffron-light: #FF8C33;
+    --saffron-glow: rgba(255, 107, 0, 0.15);
+    --deep: #0A0A0F;
+    --card-bg: #111118;
+    --border: rgba(255,255,255,0.08);
+    --text: #F0EEE8;
+    --muted: #888880;
+    --green: #2ECC71;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--deep);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, nav a, .btn { font-family: 'Syne', sans-serif; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 1000;
+    padding: 18px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -0.5px; }
+  .logo span { color: var(--saffron); }
+  nav ul { list-style: none; display: flex; gap: 2rem; }
+  nav ul a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 600; letter-spacing: 0.5px; transition: color 0.2s; }
+  nav ul a:hover { color: var(--saffron); }
+  .nav-cta {
+    background: var(--saffron); color: #fff; border: none;
+    padding: 10px 22px; border-radius: 6px; font-size: 0.85rem;
+    font-weight: 700; cursor: pointer; text-decoration: none; letter-spacing: 0.5px;
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--saffron-light); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: 0;
+    background: radial-gradient(ellipse 60% 50% at 70% 50%, rgba(255,107,0,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 60% at 20% 80%, rgba(255,107,0,0.06) 0%, transparent 60%);
+  }
+  .grid-lines {
+    position: absolute; inset: 0; z-index: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--saffron-glow); border: 1px solid rgba(255,107,0,0.3);
+    color: var(--saffron); padding: 6px 16px; border-radius: 100px;
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .badge-dot { width: 6px; height: 6px; background: var(--saffron); border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  h1 {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800; line-height: 1.05;
+    letter-spacing: -2px; margin-bottom: 1.5rem;
+  }
+  h1 em { font-style: normal; color: var(--saffron); }
+  .hero-sub { font-size: 1.15rem; color: var(--muted); max-width: 520px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.8; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    padding: 14px 30px; border-radius: 8px; font-size: 0.95rem;
+    font-weight: 700; cursor: pointer; text-decoration: none;
+    letter-spacing: 0.3px; transition: all 0.2s; display: inline-block;
+  }
+  .btn-primary { background: var(--saffron); color: #fff; border: 2px solid var(--saffron); }
+  .btn-primary:hover { background: var(--saffron-light); border-color: var(--saffron-light); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--text); border: 2px solid var(--border); }
+  .btn-outline:hover { border-color: var(--saffron); color: var(--saffron); }
+
+  .stats-row {
+    display: flex; gap: 3rem; margin-top: 4rem; flex-wrap: wrap;
+  }
+  .stat-item { }
+  .stat-num { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--saffron); }
+  .stat-label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+  .section-tag {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--saffron); margin-bottom: 1rem;
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+    letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 1.5rem;
+  }
+  .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 560px; font-weight: 300; }
+  .section-header { margin-bottom: 4rem; }
+
+  /* SERVICES */
+  #services { background: #0D0D14; }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px; background: var(--border); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden;
+  }
+  .service-card {
+    background: var(--card-bg); padding: 2.5rem 2rem;
+    transition: background 0.3s;
+    position: relative; overflow: hidden;
+  }
+  .service-card:hover { background: #18181F; }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--saffron); transform: scaleX(0);
+    transition: transform 0.3s; transform-origin: left;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-icon {
+    width: 52px; height: 52px; background: var(--saffron-glow);
+    border: 1px solid rgba(255,107,0,0.25); border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin-bottom: 1.5rem;
+  }
+  .service-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+
+  /* WHY US */
+  #why { }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .why-visual {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden;
+  }
+  .why-visual::after {
+    content: ''; position: absolute; bottom: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,107,0,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .metric-big { font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800; color: var(--saffron); }
+  .metric-label { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .progress-item { margin-bottom: 1.5rem; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 6px; }
+  .progress-bar-bg { background: rgba(255,255,255,0.06); border-radius: 100px; height: 6px; }
+  .progress-bar { height: 6px; border-radius: 100px; background: var(--saffron); }
+  .why-points { display: flex; flex-direction: column; gap: 1.5rem; }
+  .why-point { display: flex; gap: 1rem; align-items: flex-start; }
+  .why-check {
+    width: 28px; height: 28px; min-width: 28px;
+    background: var(--saffron-glow); border: 1px solid rgba(255,107,0,0.3);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; color: var(--saffron); margin-top: 2px;
+  }
+  .why-point h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+  .why-point p { color: var(--muted); font-size: 0.88rem; }
+
+  /* PROCESS */
+  #process { background: #0D0D14; }
+  .process-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; position: relative; }
+  .process-steps::before {
+    content: ''; position: absolute; top: 36px; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+  .step { padding: 0 2rem 0 0; }
+  .step-num {
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--card-bg); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800;
+    color: var(--saffron); margin-bottom: 1.5rem; position: relative; z-index: 1;
+  }
+  .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .step p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+
+  /* CASE STUDIES / RESULTS */
+  #results { }
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .result-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem; overflow: hidden; position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .result-card:hover { border-color: rgba(255,107,0,0.4); transform: translateY(-4px); }
+  .result-tag {
+    font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    background: var(--saffron-glow); color: var(--saffron); border: 1px solid rgba(255,107,0,0.2);
+    padding: 4px 12px; border-radius: 100px; display: inline-block; margin-bottom: 1rem;
+  }
+  .result-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.75rem; }
+  .result-card p { color: var(--muted); font-size: 0.88rem; margin-bottom: 1.5rem; }
+  .result-metrics { display: flex; gap: 1.5rem; }
+  .result-metric .num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--green); }
+  .result-metric .lbl { font-size: 0.75rem; color: var(--muted); }
+
+  /* PRICING */
+  #pricing { background: #0D0D14; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .pricing-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 2.5rem 2rem; position: relative;
+    transition: transform 0.3s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); }
+  .pricing-card.featured {
+    border-color: var(--saffron); background: linear-gradient(160deg, #1A1208 0%, #0F0F16 100%);
+  }
+  .popular-badge {
+    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+    background: var(--saffron); color: #fff; font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 1px; text-transform: uppercase; padding: 5px 18px;
+    border-radius: 0 0 10px 10px;
+  }
+  .plan-name { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 0.5rem; }
+  .plan-price { font-family: 'Syne', sans-serif; font-size: 2.8rem; font-weight: 800; margin-bottom: 0.25rem; }
+  .plan-price span { font-size: 1rem; color: var(--muted); font-weight: 400; }
+  .plan-desc { color: var(--muted); font-size: 0.88rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2.5rem; }
+  .plan-features li { display: flex; gap: 10px; font-size: 0.9rem; align-items: flex-start; }
+  .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; font-size: 0.9rem; }
+  .plan-features li.no::before { content: '×'; color: #444; }
+  .plan-features li.no { color: var(--muted); }
+
+  /* TESTIMONIALS */
+  #testimonials { }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+  .testi-card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem;
+    transition: border-color 0.3s;
+  }
+  .testi-card:hover { border-color: rgba(255,107,0,0.3); }
+  .stars { color: var(--saffron); font-size: 0.9rem; margin-bottom: 1rem; }
+  .testi-text { color: var(--text); font-size: 0.95rem; line-height: 1.8; margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--saffron), #FF3E00);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: #fff;
+  }
+  .testi-name { font-weight: 600; font-size: 0.95rem; }
+  .testi-role { font-size: 0.8rem; color: var(--muted); }
+
+  /* TOOLS / TECH */
+  #tools { background: #0D0D14; }
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .tool-pill {
+    background: var(--card-bg); border: 1px solid var(--border);
+    padding: 10px 20px; border-radius: 100px;
+    font-size: 0.88rem; font-weight: 500;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tool-pill:hover { border-color: var(--saffron); color: var(--saffron); }
+
+  /* CONTACT */
+  #contact {
+    background: linear-gradient(160deg, #0D0A05 0%, var(--deep) 60%);
+  }
+  .contact-wrap {
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start;
+  }
+  .contact-info h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 1rem; }
+  .contact-info p { color: var(--muted); font-size: 1rem; margin-bottom: 2.5rem; font-weight: 300; }
+  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+  .contact-icon {
+    width: 44px; height: 44px; min-width: 44px;
+    background: var(--saffron-glow); border: 1px solid rgba(255,107,0,0.25);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem;
+  }
+  .contact-detail h4 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+  .contact-detail p { color: var(--text); font-size: 0.95rem; margin: 0; }
+  .contact-detail a { color: var(--saffron); text-decoration: none; }
+  .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  input, textarea, select {
+    width: 100%; background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 18px; color: var(--text);
+    font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+    outline: none; transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: #555; }
+  input:focus, textarea:focus, select:focus { border-color: var(--saffron); }
+  textarea { resize: vertical; min-height: 140px; }
+  .submit-btn {
+    background: var(--saffron); color: #fff; border: none;
+    padding: 16px 36px; border-radius: 10px; font-family: 'Syne', sans-serif;
+    font-size: 1rem; font-weight: 700; cursor: pointer; letter-spacing: 0.5px;
+    transition: background 0.2s, transform 0.2s; text-align: center;
+  }
+  .submit-btn:hover { background: var(--saffron-light); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 5%;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+  }
+  footer .logo { font-size: 1.1rem; }
+  footer p { color: var(--muted); font-size: 0.85rem; }
+  .footer-links { display: flex; gap: 1.5rem; }
+  .footer-links a { color: var(--muted); font-size: 0.85rem; text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--saffron); }
+
+  /* SCROLL ANIMATION */
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .why-grid, .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+    h1 { letter-spacing: -1px; }
+    .stats-row { gap: 2rem; }
+  }
+
+  /* FLOATING CTA */
+  .floating-cta {
+    position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+    background: var(--saffron); color: #fff;
+    padding: 14px 24px; border-radius: 100px;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem;
+    text-decoration: none; box-shadow: 0 8px 30px rgba(255,107,0,0.4);
+    display: flex; align-items: center; gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .floating-cta:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(255,107,0,0.5); }
+  .phone-icon { font-size: 1rem; }
+</style>
+</head>
+<body>
+
+<!-- FLOATING CALL BUTTON -->
+<a href="tel:9941401700" class="floating-cta">
+  <span class="phone-icon">📞</span> Call Now
+</a>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Ad <span>Bazzar</span> India</div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:9941401700" class="nav-cta">📞 +91 99414 01700</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <div class="hero-content">
+    <div class="badge"><span class="badge-dot"></span> India's Performance-First Agency</div>
+    <h1>We Don't Run Ads.<br>We Run <em>Results.</em></h1>
+    <p class="hero-sub">Ad Bazzar India is a full-service digital marketing agency helping brands across India dominate search, social, and beyond — with data-driven campaigns that actually convert.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Get Free Audit</a>
+      <a href="#results" class="btn btn-outline">See Our Work</a>
+    </div>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">₹50Cr+</div>
+        <div class="stat-label">Ad Spend Managed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8X</div>
+        <div class="stat-label">Avg. ROAS</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Client Retention</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header fade-up">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Full-Spectrum Digital<br>Marketing Services</h2>
+    <p class="section-sub">From search ads to viral content — we handle everything so you can focus on running your business.</p>
+  </div>
+  <div class="services-grid fade-up">
+    <div class="service-card">
+      <div class="service-icon">🎯</div>
+      <h3>Performance Marketing</h3>
+      <p>Google Ads, Meta Ads, and programmatic campaigns engineered for maximum ROAS. Every rupee tracked, every conversion counted.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>SEO & Content</h3>
+      <p>Technical SEO, on-page optimization, and content strategy that pushes you to page 1 and keeps you there for the long haul.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>Social Media Marketing</h3>
+      <p>Organic growth and paid social across Instagram, Facebook, LinkedIn, and YouTube. We build communities, not just followers.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✉️</div>
+      <h3>Email & WhatsApp Marketing</h3>
+      <p>Automated drip campaigns, broadcast messages, and lead nurturing sequences that convert cold leads into loyal customers.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">💻</div>
+      <h3>Website Design & Dev</h3>
+      <p>High-converting landing pages and full websites built for speed, SEO, and seamless user experience that drives sales.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <h3>Analytics & Reporting</h3>
+      <p>Real-time dashboards, monthly strategy calls, and transparent reporting. No smoke and mirrors — just clear data.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🎬</div>
+      <h3>Video & Creative Production</h3>
+      <p>Reels, ad creatives, brand films, and graphic design — scroll-stopping content crafted by our in-house creative team.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤝</div>
+      <h3>Influencer Marketing</h3>
+      <p>Pan-India influencer network from nano to mega. Authentic collaborations that build trust and drive real purchase intent.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛒</div>
+      <h3>E-Commerce Marketing</h3>
+      <p>Marketplace SEO for Amazon & Flipkart, D2C growth strategies, and conversion rate optimization for your online store.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="why-grid">
+    <div class="why-visual fade-up">
+      <div class="metric-big">8.3X</div>
+      <div class="metric-label">Average Return on Ad Spend</div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Organic Traffic Growth</span><span style="color:var(--saffron)">+340%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width:85%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Lead Generation</span><span style="color:var(--saffron)">+280%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width:75%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Conversion Rate</span><span style="color:var(--saffron)">+190%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width:60%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Cost Per Acquisition</span><span style="color:var(--green)">−55%</span></div>
+        <div class="progress-bar-bg"><div class="progress-bar" style="width:55%; background: var(--green);"></div></div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="section-tag">Why Ad Bazzar India</div>
+      <h2 class="section-title">Built Different.<br>Built for India.</h2>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>India-First Strategy</h4>
+            <p>We understand regional consumer behavior, vernacular audiences, and the nuances of the Indian digital market better than any global agency.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Performance Guaranteed</h4>
+            <p>We put our money where our mouth is. Clear KPIs from day one, monthly performance reviews, and a team accountable to your growth.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>Dedicated Account Manager</h4>
+            <p>One point of contact who knows your brand inside out — not a ticket number in a helpdesk queue.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-check">✓</div>
+          <div>
+            <h4>No Lock-in Contracts</h4>
+            <p>Month-to-month engagements. We earn your business every single month through results, not paperwork.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-header fade-up">
+    <div class="section-tag">How We Work</div>
+    <h2 class="section-title">From Onboarding to<br>Scaling — In 4 Steps</h2>
+  </div>
+  <div class="process-steps fade-up">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3>Discovery & Audit</h3>
+      <p>We dig deep into your brand, competitors, and market. Full audit of your current digital presence and ad accounts.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3>Strategy Blueprint</h3>
+      <p>Custom 90-day growth plan built around your goals, budget, and target audience — no cookie-cutter solutions.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3>Launch & Execute</h3>
+      <p>Campaigns go live with precision. Creatives, copy, targeting, and bidding all optimized from day one.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3>Scale & Optimize</h3>
+      <p>Weekly data analysis, A/B testing, and continuous optimization. We scale what works and cut what doesn't.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="results">
+  <div class="section-header fade-up">
+    <div class="section-tag">Case Studies</div>
+    <h2 class="section-title">Real Brands.<br>Real Growth.</h2>
+    <p class="section-sub">A snapshot of what we've achieved for businesses across India.</p>
+  </div>
+  <div class="results-grid fade-up">
+    <div class="result-card">
+      <div class="result-tag">E-Commerce | Fashion</div>
+      <h3>Chennai D2C Brand 10X'd Revenue in 6 Months</h3>
+      <p>Meta Ads + Google Shopping strategy for a Chennai-based ethnic wear brand. Scaled from ₹2L to ₹20L monthly revenue.</p>
+      <div class="result-metrics">
+        <div class="result-metric"><div class="num">10X</div><div class="lbl">Revenue Growth</div></div>
+        <div class="result-metric"><div class="num">6.8X</div><div class="lbl">ROAS</div></div>
+        <div class="result-metric"><div class="num">−42%</div><div class="lbl">CPA Drop</div></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-tag">B2B | SaaS</div>
+      <h3>SaaS Company Achieved 300+ Qualified Leads/Month</h3>
+      <p>LinkedIn Ads + SEO-driven inbound funnel for a Bengaluru-based HR tech company. Reduced CAC by 60%.</p>
+      <div class="result-metrics">
+        <div class="result-metric"><div class="num">300+</div><div class="lbl">Leads/Month</div></div>
+        <div class="result-metric"><div class="num">−60%</div><div class="lbl">CAC Reduction</div></div>
+        <div class="result-metric"><div class="num">#1</div><div class="lbl">SEO Ranking</div></div>
+      </div>
+    </div>
+    <div class="result-card">
+      <div class="result-tag">Real Estate | Lead Gen</div>
+      <h3>Real Estate Developer Closed ₹15Cr in 90 Days</h3>
+      <p>Hyperlocal Facebook and Google Ads targeting for a Coimbatore developer. Site visits doubled in 3 months.</p>
+      <div class="result-metrics">
+        <div class="result-metric"><div class="num">₹15Cr</div><div class="lbl">Bookings Driven</div></div>
+        <div class="result-metric"><div class="num">2X</div><div class="lbl">Site Visits</div></div>
+        <div class="result-metric"><div class="num">400+</div><div class="lbl">Leads Generated</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-header fade-up">
+    <div class="section-tag">Pricing</div>
+    <h2 class="section-title">Transparent Plans.<br>Zero Surprises.</h2>
+    <p class="section-sub">Choose a plan that fits your growth stage. All plans include a dedicated account manager.</p>
+  </div>
+  <div class="pricing-grid fade-up">
+    <div class="pricing-card">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">₹15,000 <span>/ month</span></div>
+      <p class="plan-desc">Perfect for small businesses and startups taking their first step into digital marketing.</p>
+      <ul class="plan-features">
+        <li>Google Ads or Meta Ads (1 platform)</li>
+        <li>Monthly performance report</li>
+        <li>Ad copywriting & creatives (4/mo)</li>
+        <li>Dedicated account manager</li>
+        <li>WhatsApp support</li>
+        <li class="no">SEO services</li>
+        <li class="no">Social media management</li>
+        <li class="no">Landing page design</li>
+      </ul>
+      <a href="#contact" class="btn btn-outline" style="width:100%; text-align:center;">Get Started</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="popular-badge">Most Popular</div>
+      <div class="plan-name">Growth</div>
+      <div class="plan-price">₹35,000 <span>/ month</span></div>
+      <p class="plan-desc">For growing businesses ready to scale across multiple channels with a full-funnel strategy.</p>
+      <ul class="plan-features">
+        <li>Google Ads + Meta Ads</li>
+        <li>SEO (10 keywords)</li>
+        <li>Social media (3 platforms)</li>
+        <li>Ad creatives (12/mo)</li>
+        <li>Monthly strategy call</li>
+        <li>Landing page optimization</li>
+        <li>Email/WhatsApp automation</li>
+        <li class="no">Influencer marketing</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary" style="width:100%; text-align:center;">Get Started</a>
+    </div>
+    <div class="pricing-card">
+      <div class="plan-name">Enterprise</div>
+      <div class="plan-price">Custom</div>
+      <p class="plan-desc">For established brands looking for an all-in-one marketing partner with dedicated team resources.</p>
+      <ul class="plan-features">
+        <li>All channels covered</li>
+        <li>Full SEO + content strategy</li>
+        <li>Influencer campaign management</li>
+        <li>Video production & reels</li>
+        <li>Bi-weekly strategy calls</li>
+        <li>Dedicated creative team</li>
+        <li>Weekly reporting dashboard</li>
+        <li>Priority 24/7 support</li>
+      </ul>
+      <a href="tel:9941401700" class="btn btn-outline" style="width:100%; text-align:center;">Call to Discuss</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header fade-up">
+    <div class="section-tag">Testimonials</div>
+    <h2 class="section-title">Clients Who Grew<br>With Us</h2>
+  </div>
+  <div class="testi-grid fade-up">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Ad Bazzar India transformed our online presence completely. Our sales doubled within 4 months. The team is responsive, data-driven, and genuinely cares about results."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">RK</div>
+        <div>
+          <div class="testi-name">Ramesh Kumar</div>
+          <div class="testi-role">Founder, StyleHaat — Chennai</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"Finally an agency that speaks business language, not just marketing jargon. They set clear KPIs and hit every single one. Our cost per lead dropped by 55%."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">PS</div>
+        <div>
+          <div class="testi-name">Priya Suresh</div>
+          <div class="testi-role">CEO, NovaTech Solutions — Bengaluru</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"The dedication of the Ad Bazzar team is unmatched. They treat our ad budget like their own money. Best ROI we've seen in 5 years of working with agencies."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AJ</div>
+        <div>
+          <div class="testi-name">Arjun Jain</div>
+          <div class="testi-role">MD, Prestige Homes — Coimbatore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-header fade-up">
+    <div class="section-tag">Technology Stack</div>
+    <h2 class="section-title">Tools We Master</h2>
+  </div>
+  <div class="tools-grid fade-up">
+    <div class="tool-pill">Google Ads</div>
+    <div class="tool-pill">Meta Ads Manager</div>
+    <div class="tool-pill">Google Analytics 4</div>
+    <div class="tool-pill">SEMrush</div>
+    <div class="tool-pill">Ahrefs</div>
+    <div class="tool-pill">HubSpot</div>
+    <div class="tool-pill">Mailchimp</div>
+    <div class="tool-pill">Hotjar</div>
+    <div class="tool-pill">Canva Pro</div>
+    <div class="tool-pill">Adobe Creative Suite</div>
+    <div class="tool-pill">Shopify</div>
+    <div class="tool-pill">WordPress</div>
+    <div class="tool-pill">Looker Studio</div>
+    <div class="tool-pill">LinkedIn Campaign Manager</div>
+    <div class="tool-pill">WhatsApp Business API</div>
+    <div class="tool-pill">Zapier</div>
+    <div class="tool-pill">Klaviyo</div>
+    <div class="tool-pill">YouTube Studio</div>
+    <div class="tool-pill">Amazon Ads</div>
+    <div class="tool-pill">Flipkart Ads</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="fade-up">
+      <div class="section-tag">Get In Touch</div>
+      <div class="contact-info">
+        <h2>Let's Grow Your Business Together</h2>
+        <p>Tell us about your brand and goals. We'll get back to you within 24 hours with a free audit and custom proposal.</p>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div>
+          <h4>Phone / WhatsApp</h4>
+          <p><a href="tel:9941401700">+91 99414 01700</a></p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <h4>Email</h4>
+          <p><a href="mailto:hello@adbazzarindia.com">hello@adbazzarindia.com</a></p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div>
+          <h4>Location</h4>
+          <p>Chennai, Tamil Nadu, India<br><span style="color:var(--muted); font-size:0.85rem;">Serving clients Pan-India</span></p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <h4>Office Hours</h4>
+          <p>Mon – Sat: 9 AM – 7 PM IST</p>
+        </div>
+      </div>
+    </div>
+    <div class="fade-up">
+      <div class="contact-form">
+        <div class="form-row">
+          <input type="text" placeholder="Your Name" />
+          <input type="text" placeholder="Business Name" />
+        </div>
+        <div class="form-row">
+          <input type="email" placeholder="Email Address" />
+          <input type="tel" placeholder="Phone Number" />
+        </div>
+        <select>
+          <option value="" disabled selected>Select Service You Need</option>
+          <option>Performance Marketing (Google/Meta Ads)</option>
+          <option>SEO & Content Strategy</option>
+          <option>Social Media Marketing</option>
+          <option>Email / WhatsApp Marketing</option>
+          <option>Website Design & Development</option>
+          <option>E-Commerce Marketing</option>
+          <option>Full-Service Growth Package</option>
+          <option>Other</option>
+        </select>
+        <input type="text" placeholder="Monthly Marketing Budget (₹)" />
+        <textarea placeholder="Tell us about your business and what you'd like to achieve..."></textarea>
+        <button class="submit-btn" onclick="alert('Thank you! We will contact you within 24 hours. You can also reach us directly at +91 99414 01700')">
+          Send Message & Get Free Audit →
+        </button>
+        <p style="font-size:0.8rem; color:var(--muted); text-align:center;">Or call us directly: <a href="tel:9941401700" style="color:var(--saffron); text-decoration:none; font-weight:600;">+91 99414 01700</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Ad <span>Bazzar</span> India</div>
+  <p>© 2025 Ad Bazzar India. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:9941401700">+91 99414 01700</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
